@@ -1,0 +1,13 @@
+{
+  "name": "preedh",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --base preedh",
+    "build-cache": "node scryfall/scryfall.js"
+  },
+  "author": "vico",
+  "license": "ISC",
+  "description": ""
+}
