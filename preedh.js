@@ -14,6 +14,7 @@ const input = document.getElementById('input')
 const results = document.getElementById('results')
 
 const inputUrl = document.getElementById('url')
+const buttonPaste = document.getElementById('button-paste')
 const buttonFetch = document.getElementById('button-fetch')
 
 function failIfPresent(card, list, reason) {
@@ -66,7 +67,7 @@ function decklistChanged() {
     }
 }
 
-buttonFetch.addEventListener('click', async() => {
+async function decklistUrlChanged() {
     const url = inputUrl.value.trim()
     input.value = ''
     decklistChanged()
@@ -76,7 +77,15 @@ buttonFetch.addEventListener('click', async() => {
         input.value = data.join('\n')
         decklistChanged()
     }
+}
+
+buttonPaste.addEventListener('click', async() => {
+    const text = await navigator.clipboard.readText()
+    inputUrl.value = text
+    decklistUrlChanged()
 })
+
+buttonFetch.addEventListener('click', decklistUrlChanged)
 
 for (const event of ['change', 'keyup', 'paste']) {
     input.addEventListener(event, decklistChanged)

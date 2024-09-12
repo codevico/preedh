@@ -10,12 +10,14 @@
         <div id="header">Paste a decklist on the left to see which cards are banned in PRE EDH.</div>
         <div id="paste-wrapper">
             <input id="url" placeholder="Or paste a moxfield url here...">
-            <button type="button" id="button-fetch">Import</button>
+            <button type="button" class="button" id="button-paste">Paste</button>
+            <button type="button" class="button" id="button-fetch">Import</button>
         </div>
         <div id="wrapper">
             <textarea id="input" placeholder="Paste your decklist here..."></textarea>
             <ul id="results"></ul>
         </div>
+        <div id="footer">© PRE EDH by <a href="https://tolom.me">vico</a></div>
     </div>
     <script src="preedh.js" type="module"></script>
 </body>
