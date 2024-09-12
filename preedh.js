@@ -13,6 +13,9 @@ const lotrLookup = lotrCards.map(c => c.toLowerCase())
 const input = document.getElementById('input')
 const results = document.getElementById('results')
 
+const inputUrl = document.getElementById('url')
+const buttonFetch = document.getElementById('button-fetch')
+
 function failIfPresent(card, list, reason) {
     if (list.includes(card)) {
         throw new Error(reason)
@@ -63,7 +66,20 @@ function decklistChanged() {
     }
 }
 
+buttonFetch.addEventListener('click', async() => {
+    const url = inputUrl.value.trim()
+    input.value = ''
+    decklistChanged()
+    if (url) {
+        const response = await fetch('https://tolom.me/api/decklist/' + url)
+        const data = await response.json()
+        input.value = data.join('\n')
+        decklistChanged()
+    }
+})
+
 for (const event of ['change', 'keyup', 'paste']) {
     input.addEventListener(event, decklistChanged)
 }
+
 decklistChanged()
