@@ -7,15 +7,23 @@
 </head>
 <body>
     <div id="page">
-        <div id="header">Paste a decklist on the left to see which cards are banned in PRE EDH.</div>
+        <div id="header" class="box">
+            Paste a decklist on the left to see which cards are banned in PRE EDH.
+            <label for="preedh-explanation-toggle" id="preedh-explanation-label">What is PRE EDH?</label>
+            <input type="checkbox" id="preedh-explanation-toggle">
+        </div>
+        <div id="preedh-explanation" class="box">
+            PRE EDH is a homebrew format cooked by my friend group.
+            There are two distinct philosophies at play: the first is that EDH got worse after Wizards started officially acknowledging the format in their game design, therefore every card that references a commander, the command zone, color identities etc. is banned here. The second is that UB is immersion breaking, therefore all UB cards are banned regardless of their mechanics.
+        </div>
         <div id="paste-wrapper">
             <input id="url" placeholder="Or paste a moxfield url here...">
             <button type="button" class="button" id="button-paste">Paste</button>
             <button type="button" class="button" id="button-fetch">Import</button>
         </div>
         <div id="wrapper">
-            <textarea id="input" placeholder="Paste your decklist here..."></textarea>
-            <ul id="results"></ul>
+            <textarea id="input" class="box" placeholder="Paste your decklist here..."></textarea>
+            <ul id="results" class="box"></ul>
         </div>
         <div id="footer">© PRE EDH by <a href="https://tolom.me">vico</a></div>
     </div>

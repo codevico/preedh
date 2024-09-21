@@ -31,6 +31,11 @@ a {
 .button:hover {
     background: var(--border-color);
 }
+.box {
+    padding: 1em;
+    background: var(--background-box);
+    border: 2px solid var(--border-color);
+}
 #page {
     display: flex;
     flex-direction: column;
@@ -46,7 +51,7 @@ a {
     display: flex;
     gap: .5em;
 }
-#header, #url, #input, #results, .button {
+#url, .button {
     border: 2px solid var(--border-color);
 }
 #url, #input {
@@ -54,9 +59,6 @@ a {
 }
 #url:focus, #input:focus {
     border-color: rgb(140, 140, 255);
-}
-#header, #input, #results {
-    padding: 1em;
 }
 #header, #results {
     background: var(--background-box);
@@ -96,4 +98,17 @@ a {
 }
 .invalid-card-link:hover {
     text-decoration: underline;
+}
+#preedh-explanation-toggle {
+    display: none;
+}
+#preedh-explanation-label {
+    cursor: pointer;
+    text-decoration: underline dotted;
+}
+#preedh-explanation {
+    display: none;
+}
+body:has(#preedh-explanation-toggle:checked) #preedh-explanation {
+    display: block;
 }
