@@ -2,13 +2,12 @@ import bannedCards from './cards/banned.json'
 import partnerCards from './cards/partner.json'
 import commanderCards from './cards/commander.json'
 import ubCards from './cards/ub.json'
-import lotrCards from './cards/banned.json'
+import metadata from './metadata.json'
 
 const bannedLookup = bannedCards.map(c => c.toLowerCase())
 const parterLookup = partnerCards.map(c => c.toLowerCase())
 const commanderLookup = commanderCards.map(c => c.toLowerCase())
 const ubLookup = ubCards.map(c => c.toLowerCase())
-const lotrLookup = lotrCards.map(c => c.toLowerCase())
 
 const input = document.getElementById('input')
 const results = document.getElementById('results')
@@ -31,7 +30,6 @@ function checkCard(card) {
         failIfPresent(lowercase, parterLookup, `it has partner`)
         failIfPresent(lowercase, commanderLookup, `it references a commander`)
         failIfPresent(lowercase, ubLookup, `it's from Universes Beyond`)
-        failIfPresent(lowercase, lotrLookup, `it's from the LOTR set`)
     } catch (error) {
         return {card: realCardName, reason: error.message}
     }
@@ -92,3 +90,6 @@ for (const event of ['change', 'keyup', 'paste']) {
 }
 
 decklistChanged()
+
+document.querySelector('.commit-hash').textContent = metadata.commit
+document.querySelector('.last-update').textContent = metadata.date
