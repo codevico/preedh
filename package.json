@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
-    "build": "vite build --base preedh",
+    "build": "node metadata.js && vite build --base preedh",
     "build-cache": "node scryfall/scryfall.js"
   },
   "author": "vico",

@@ -1,5 +1,4 @@
 const fs = require('fs')
-const process = require('child_process')
 
 const MILLISECONDS_DELAY = 100
 
@@ -35,14 +34,6 @@ async function fetchAndSave(query, filename) {
 }
 
 async function fetchAll() {
-    const date = new Date()
-    const formattedDate = `${date.getFullYear()}-${(date.getMonth() + 1).toString().padStart(2, '0')}-${date.getDate().toString().padStart(2, '0')}`
-    const commitHash = process.execSync('git rev-parse --short HEAD').toString().trim()
-    const metadata = {
-        date: formattedDate,
-        commit: commitHash
-    }
-    fs.writeFileSync('metadata.json', JSON.stringify(metadata))
     await fetchAndSave('banned:edh', 'cards/banned.json')
     await fetchAndSave('f:edh kw:partner', 'cards/partner.json')
     await fetchAndSave('f:edh (o:"your commander" or o:"a commander" or o:"color identity")', 'cards/commander.json')
