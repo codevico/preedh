@@ -16,12 +16,6 @@ const inputUrl = document.getElementById('url')
 const buttonPaste = document.getElementById('button-paste')
 const buttonFetch = document.getElementById('button-fetch')
 
-function failIfPresent(card, list, reason) {
-    if (list.includes(card)) {
-        return card
-    }
-}
-
 function checkCard(card) {
     const realCardName = card.match(/(?:[\d]* )?(.*)/)[1]
     const lowercase = realCardName?.toLowerCase()
