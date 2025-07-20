@@ -4,8 +4,9 @@
   "main": "index.js",
   "scripts": {
     "dev": "vite",
+    "build-cache": "node scryfall/scryfall.js",
     "build": "node metadata.js && vite build --base preedh",
-    "build-cache": "node scryfall/scryfall.js"
+		"deploy": "npm run build && robocopy /s dist \\\\box\\docker\\caddy\\site\\archive.tolom.me\\preedh"
   },
   "author": "vico",
   "license": "ISC",
