@@ -18,20 +18,22 @@ const buttonFetch = document.getElementById('button-fetch')
 
 function failIfPresent(card, list, reason) {
     if (list.includes(card)) {
-        throw new Error(reason)
+        return card
     }
 }
 
 function checkCard(card) {
     const realCardName = card.match(/(?:[\d]* )?(.*)/)[1]
-    try {
-        const lowercase = realCardName?.toLowerCase()
-        failIfPresent(lowercase, bannedLookup, `it's banned in EDH`)
-        failIfPresent(lowercase, parterLookup, `it has partner`)
-        failIfPresent(lowercase, commanderLookup, `it references a commander`)
-        failIfPresent(lowercase, ubLookup, `it's from Universes Beyond`)
-    } catch (error) {
-        return {card: realCardName, reason: error.message}
+    const lowercase = realCardName?.toLowerCase()
+    for (const check of [
+        [bannedCards, bannedLookup, `it's banned in EDH`],
+        [partnerCards, parterLookup, `it has partner`],
+        [commanderCards, commanderLookup, `it references a commander`],
+        [ubCards, ubLookup, `it's from Universes Beyond`]
+    ]) {
+        if (check[1].includes(lowercase)) {
+            return {card: check[0].find(card => card.toLowerCase() === lowercase) || lowercase, reason: check[2]}
+        }
     }
 }
 
