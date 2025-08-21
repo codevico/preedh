@@ -66,7 +66,7 @@ async function decklistUrlChanged() {
     input.value = ''
     decklistChanged()
     if (url) {
-        const response = await fetch('https://tolom.me/api/decklist?' + new URLSearchParams({
+        const response = await fetch('https://api.tolom.me/decklist?' + new URLSearchParams({
             url: url
         }))
         const data = await response.json()
